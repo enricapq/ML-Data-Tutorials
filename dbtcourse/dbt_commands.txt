@@ -1,0 +1,37 @@
+dbt run
+dbt run --full-refresh --select fct_reviews
+
+dbt seed
+
+dbt compile
+
+dbt source freshness
+
+dbt snapshot
+
+dbt test
+dbt test --select dim_listings_cleansed
+dbt test --select source:airbnb.listings
+dbt --debug test --select source:airbnb.listings
+
+dbt deps
+
+dbt docs generate
+dbt docs serve
+
+
+
+~/.dbt/profiles.yml
+dbtlearn:
+  outputs:
+    dev:
+      account: 12345abc.us-east-2.aws
+      database: AIRBNB
+      password: dbt123
+      role: transform
+      schema: DEV
+      threads: 1
+      type: snowflake
+      user: dbt
+      warehouse: COMPUTE_WH
+  target: dev
